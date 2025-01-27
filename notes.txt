@@ -1,0 +1,6 @@
+npm init -y
+npm i express
+
+npm install create-react-app --global
+npm -v
+node -v
