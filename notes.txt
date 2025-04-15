@@ -4,3 +4,9 @@ npm i express
 npm install create-react-app --global
 npm -v
 node -v
+
+npm start
+
+tree /f /a > folder-structure.txt
+
+node server.js ----start backend , cors on different PORT
