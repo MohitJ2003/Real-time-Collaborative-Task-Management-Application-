@@ -1,13 +1,20 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "rtctm-app",
+  "version": "5.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/angular-jwt": "^5.2.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.0.2",
+    "axios": "^1.8.4",
     "cra-template": "1.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^4.2.4"
+    "react-router-dom": "^7.5.0",
+    "react-scripts": "^5.0.1",
+    "web-vitals": "^4.2.4",
+    "webpack": "^5.99.5"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
