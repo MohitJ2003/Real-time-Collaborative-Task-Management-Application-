@@ -10,3 +10,4 @@ npm start
 tree /f /a > folder-structure.txt
 
 node server.js ----start backend , cors on different PORT
+https://youtu.be/aSxhWTEDJOs?si=ta7lrfznjJZK-pHq

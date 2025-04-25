@@ -3,31 +3,23 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button, Container, Box, Typography, Link, Alert } from '@mui/material';
 
-function Login() {
-    const [formData, setFormData] = useState({ email: '', password: '' });
-    const [error, setError] = useState('');
+function Register() {
+    const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+    const [error, setError] = useState(''); // <- Added error state
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        setError('');
+        setError(''); // Clear error on input change
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/login', formData);
-            localStorage.setItem('token', res.data.token);
-            navigate('/dashboard');
+            await axios.post('http://localhost:5000/api/auth/register', formData);
+            navigate('/login');
         } catch (err) {
-            const errorMessage = err.response?.data?.message || 'Login Failed';
-            if (errorMessage.toLowerCase().includes('wrong password')) {
-                setError('Hey User, you entered the wrong password.');
-            } else if (errorMessage.toLowerCase().includes('user not found')) {
-                setError('User does not exist.');
-            } else {
-                setError('Login Failed');
-            }
+            setError(err.response?.data?.message || 'Registration Failed');
         }
     };
 
@@ -40,8 +32,16 @@ function Login() {
                 justifyContent="center"
                 minHeight="100vh"
             >
-                <Typography variant="h4" gutterBottom>Login</Typography>
+                <Typography variant="h4" gutterBottom>Register</Typography>
                 <Box component="form" onSubmit={handleSubmit} width="100%">
+                    <TextField
+                        label="Username"
+                        name="username"
+                        fullWidth
+                        margin="normal"
+                        onChange={handleChange}
+                        required
+                    />
                     <TextField
                         label="Email"
                         name="email"
@@ -66,7 +66,7 @@ function Login() {
                         fullWidth
                         sx={{ mt: 2 }}
                     >
-                        Login
+                        Register
                     </Button>
 
                     {/* Error Message */}
@@ -79,9 +79,9 @@ function Login() {
 
                 <Box mt={2}>
                     <Typography>
-                        Don't have an account?{' '}
-                        <Link href="/register" underline="hover">
-                            Register here
+                        Already have an account?{' '}
+                        <Link href="/login" underline="hover">
+                            Login here
                         </Link>
                     </Typography>
                 </Box>
@@ -90,4 +90,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;
